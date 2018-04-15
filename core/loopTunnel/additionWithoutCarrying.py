@@ -26,14 +26,10 @@ Example
 """
 def additionWithoutCarrying(param1, param2):
     lst = list(int(i) for i in str(min(param1,param2)))
-    print(lst)
     lst2 = list(int(i) for i in str(max(param1,param2)))
-    print(lst2)
     lst3 = []
     lst = lst[::-1]
-    print(lst)
     lst2 = lst2[::-1]
-    print(lst2)
     for x in range(len(lst)):
         test = ((lst[x]+lst2[x])%10)
         lst2[x] = str(test)
