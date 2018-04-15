@@ -10,7 +10,6 @@ Here are all possible ways:
     [0, -1, 0] [-1, 0] [-1]
     [0, -1, 0] [-1] [0, -1]
 """
-
 def halfsplit(array,amt):
     count = 0
     cur_sum = 0
