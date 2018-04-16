@@ -1,4 +1,4 @@
-# codefights
+# Codefights coding challenges: https://codefights.com/
 **My solutions to codefights tasks**
 
 ## Core
