@@ -1,5 +1,5 @@
 # Codefights coding challenges:
-https://codefights.com/
+https://codefights.com/ //
 **My solutions to codefights tasks**
 
 ## Core
