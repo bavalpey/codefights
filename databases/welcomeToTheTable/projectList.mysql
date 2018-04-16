@@ -13,6 +13,6 @@ table. Return it sorted by internal_id in ascending order.
 */
 CREATE PROCEDURE projectList()
 BEGIN
-	select project_name, team_lead, income
-	from Projects;
+select project_name, team_lead, income
+from Projects;
 END
