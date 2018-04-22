@@ -40,7 +40,8 @@ def pageComplexity(document):
             lv.sub_level()
 
         def handle_data(self, data):
-            True
+            True # this method does not need to exist, but I did not want to cause any errors if I simply did not define it.
+                 # so I filled it in with a harmless line of code.
     parser  = MyHTMLParser()
     parser.feed(document)
     mx = max(startTags)
