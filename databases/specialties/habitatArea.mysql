@@ -17,6 +17,6 @@ guaranteed that the resulting area is greater than 0.
 
 CREATE PROCEDURE habitatArea()
 BEGIN
-	set @g := (SELECT CONCAT("MULTIPOINT(", group_concat(x,' ',y, '') , ")") FROM places);
+  SET @g := (SELECT CONCAT("MULTIPOINT(", group_concat(x,' ',y, '') , ")") FROM places);
   SELECT ST_AREA(ST_ConvexHull(ST_GeomFromText(@g))) as area;
 END
