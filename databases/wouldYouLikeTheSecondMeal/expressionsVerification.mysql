@@ -20,9 +20,9 @@ expressions. The rows should be ordered by id.
 
 CREATE PROCEDURE expressionsVerification()
 BEGIN
-select *
-from expressions
-where (operation = "+" and (expressions.a + b) = c)
-or (operation = "-" and (expressions.a - b) = c) or (operation = "/" and (expressions.a / b) = c) or
-  (operation = "*" and (expressions.a * b) = c);
+  select *
+  from expressions
+  where (operation = "+" and (expressions.a + b) = c)
+  or (operation = "-" and (expressions.a - b) = c) or (operation = "/" and (expressions.a / b) = c) or
+    (operation = "*" and (expressions.a * b) = c);
 END
