@@ -1,0 +1,24 @@
+/*
+You are developing an alarm clock app that works as follows: the user can set a date and a time, and the app will ring every week at the
+given time starting at the given date until the end of the current year.
+  The starting date is the only record in the userInput table of the following structure:
+  input_date: the date and time of the first alarm (of a DATETIME type).
+
+Given the table, your task is to compose the resulting table with a single column alarm_date. This column should contain all dates
+(including time) when the alarm clock will ring in ascending order.
+*/
+
+CREATE PROCEDURE alarmClocks()
+BEGIN
+  DROP TABLE IF EXISTS tmp_date;
+  CREATE TABLE IF NOT EXISTS tmp_date (alarm_date DATETIME);
+  SET @date_start := (SELECT input_date FROM userInput);
+  SET @end_date := (SELECT YEAR(input_date) FROM userInput);
+
+  WHILE @date_start <= @end_date DO
+    INSERT INTO tmp_date  VALUES (@date_start);
+    SET @date_start = date_add(@date_start, INTERVAL 7 DAY);
+  END WHILE;
+
+  SELECT * FROM tmp_date;
+END
