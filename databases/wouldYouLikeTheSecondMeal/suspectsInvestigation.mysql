@@ -24,12 +24,12 @@ be ordered by the suspects' ids in ascending order.
 */
 CREATE PROCEDURE suspectsInvestigation()
 BEGIN
-    select D.id, D.name, D.surname
-    from (
-        select *
-        from Suspect
-        where height <= 170 and (left(name, 1) = 'b' or left(name,1) = 'B') and Left(surname, 3) = "Gre" and Right(surname, 1) = 'n') as
-        D
-    where length(surname) = 5
-    ORDER BY id asc;
+  select D.id, D.name, D.surname
+  from (
+      select *
+      from Suspect
+      where height <= 170 and (left(name, 1) = 'b' or left(name,1) = 'B') and Left(surname, 3) = "Gre" and Right(surname, 1) = 'n') as
+      D
+  where length(surname) = 5
+  ORDER BY id asc;
 END
