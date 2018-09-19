@@ -11,8 +11,8 @@ The answer should be a table with 2 columns, continent and users, sorted by the 
 
 CREATE PROCEDURE usersByContinent()
 BEGIN
-	select continent, sum(users) as users
-    from countries
-    GROUP BY continent
-    ORDER BY users desc;
-END
+  SELECT continent, sum(users) as users
+  FROM countries
+  GROUP BY continent
+  ORDER BY users desc;
+  END
