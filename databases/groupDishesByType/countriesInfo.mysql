@@ -15,6 +15,6 @@ population, in columns titled number, average and total.
 
 CREATE PROCEDURE countriesInfo()
 BEGIN
-	select count(*) as 'number', avg(population) as 'average', SUM(population) as 'total'
-    from countries;
+  SELECT count(*) as 'number', avg(population) as 'average', SUM(population) as 'total'
+  FROM countries;
 END
