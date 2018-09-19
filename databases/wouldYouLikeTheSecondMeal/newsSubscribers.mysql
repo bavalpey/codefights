@@ -18,13 +18,14 @@ in ascending order by the subscribers' first names.
 
 CREATE PROCEDURE newsSubscribers()
 BEGIN
-select distinct subscriber
-from (select distinct subscriber
-from full_year
-where newspaper LIKE "%Daily%"
-UNION ALL
-select distinct subscriber
-from half_year
-where newspaper LIKE "%Daily%") as T
-order by subscriber asc;
+  select distinct subscriber
+  from (
+    select distinct subscriber
+    from full_year
+    where newspaper LIKE "%Daily%"
+    UNION ALL
+    select distinct subscriber
+    from half_year
+    where newspaper LIKE "%Daily%") as T
+  order by subscriber asc;
 END
