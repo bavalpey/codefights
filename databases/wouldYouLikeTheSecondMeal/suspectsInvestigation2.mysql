@@ -23,12 +23,12 @@ be ordered by the suspects' ids in ascending order.
 
 CREATE PROCEDURE suspectsInvestigation2()
 BEGIN
-select id, name, surname
-from Suspect
-where id not in(
-select id
-from Suspect
-where height > 170 and (left(name, 1) = 'b' or left(name,1) = 'B') and Left(surname, 3) = "Gre" and Right(surname, 1) = 'n' and
-  length(surname) = 5)
-ORDER BY id asc;
+  select id, name, surname
+  from Suspect
+  where id not in(
+    select id
+    from Suspect
+    where height > 170 and (left(name, 1) = 'b' or left(name,1) = 'B') and Left(surname, 3) = "Gre" and Right(surname, 1) = 'n' and
+      length(surname) = 5)
+  ORDER BY id asc;
 END
