@@ -1,0 +1,47 @@
+/*
+You work with a professor of applied mathematics and informatics to create and distribute this year's plan of courses for students.
+You were almost finished when you noticed that a couple of fixes yet need to be done. There are courses which names' are marked as '-
+toremove', so you decided to remove them permanently. Prior to removing them, you'd like to make sure that deleting a course would also 
+remove it from all the related tables automatically.
+
+All courses are stored in courses table that has the following structure:
+
+  id: unique id of the course;
+  name: unique name of the course that may end with '-toremove', which means that the course is about to be removed;
+  description: description of the course.
+  
+There are also groupcourses and groupexams tables which represent courses assigned to groups and examination dates of courses for each
+group, respectively. Here are their structures:
+  groupcourses:
+    group_id: group id;
+    course_id: course id;
+  groupexams:
+    date: the date of the exam;
+    group_id: id of the group taking the exam;
+    course_id: id of the course.
+    
+Given courses, groupcourses and groupexams tables you need to properly set up foreign keys, so that after a record is deleted from the 
+courses table, records that correspond to the deleted course are also deleted from groupcourses and groupexams. Please note that 
+groupexams can only contain pairs from groupcourses and there can be multiple exam dates for the same group_id, course_id combination. 
+It is guaranteed that adding correct foreign keys won't raise any errors.
+*/
+
+CREATE PROCEDURE coursesDistribution()
+BEGIN
+  ALTER TABLE groupcourses ADD FOREIGN KEY (course_id)
+  references courses(id)
+  on delete cascade;
+  
+  ALTER TABLE groupexams ADD FOREIGN KEY (course_id)
+  referen  ces courses(id)
+  on delete cascade;
+  
+  DELETE FROM courses WHERE name LIKE '%-toremove';
+  
+  SELECT group_id, course_id
+  FROM groupcourses
+  UNION
+  SELECT group_id, course_id
+  FROM groupexams
+  ORDER BY group_id, course_id;
+END
