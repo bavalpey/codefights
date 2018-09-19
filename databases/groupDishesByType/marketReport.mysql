@@ -17,19 +17,19 @@ the country names in ascending order. In addition, it should have an extra row a
 
 CREATE PROCEDURE marketReport()
 BEGIN
-SELECT country, sum(competitors) as competitors
-FROM (
-  SELECT country, count(competitor) as competitors
-  from foreignCompetitors
-  GROUP BY country, competitor) as T
-GROUP BY country
-UNION ALL
-select ("Total:"), sum(F.competitors)
-FROM (
   SELECT country, sum(competitors) as competitors
   FROM (
     SELECT country, count(competitor) as competitors
-    FROM foreignCompetitors
+    from foreignCompetitors
     GROUP BY country, competitor) as T
-  GROUP BY country) as F;
+  GROUP BY country
+  UNION ALL
+  SELECT ("Total:"), sum(F.competitors)
+  FROM (
+    SELECT country, sum(competitors) as competitors
+    FROM (
+      SELECT country, count(competitor) as competitors
+      FROM foreignCompetitors
+      GROUP BY country, competitor) as T
+    GROUP BY country) as F;
 END
