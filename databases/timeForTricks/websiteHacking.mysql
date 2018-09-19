@@ -17,8 +17,8 @@ Your task is to update the existing query. Note: You should add something to the
 */
 
 CREATE PROCEDURE websiteHacking()
-    SELECT id,login,name
-    FROM users
-    WHERE type='user'
-    or True=True
-    ORDER BY id
+  SELECT id,login,name
+  FROM users
+  WHERE type='user'
+  or True=True
+  ORDER BY id
