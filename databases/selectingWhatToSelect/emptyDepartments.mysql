@@ -1,0 +1,23 @@
+/*
+You've just started working for a large and successful company, and it's come as a shock to find that the records about the company's
+internal organization haven't been updated for ages. Some employees have changed their departments and some have resigned, and
+consequently, there are some departments that have no employees in them. You want to identify these departments.
+
+Information about employees and departments is stored in two tables, employees and departments, which have the following structure:
+  employees:
+    id: the unique employee ID;
+    full_name: the employee's full name;
+    department: a foreign key referencing departments.id;
+  departments:
+    id: the unique department ID;
+    dep_name: the department name.
+  
+Given the tables employees and departments, build a table with only one column, dep_name, which contains all the departments in which
+there are no employees, sorted by id.
+*/
+
+CREATE PROCEDURE emptyDepartments()
+BEGIN
+  select dep_name from departments
+  where not exists (select * from employees where employees.department = departments.id);
+END
