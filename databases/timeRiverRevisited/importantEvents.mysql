@@ -20,7 +20,7 @@ Given the table events, sort it as described above and return the resulting tabl
 
 CREATE PROCEDURE importantEvents()
 BEGIN
-	SELECT *
+  SELECT *
   FROM events
   ORDER BY weekday(event_date), participants desc;
 END
