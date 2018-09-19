@@ -14,6 +14,6 @@ put the list in a table that has a single countries column.
 
 CREATE PROCEDURE travelDiary()
 BEGIN
-	SELECT GROUP_CONCAT(DISTINCT country ORDER BY country ASC SEPARATOR ';') as countries
+  SELECT GROUP_CONCAT(DISTINCT country ORDER BY country ASC SEPARATOR ';') as countries
   FROM diary;
 END
