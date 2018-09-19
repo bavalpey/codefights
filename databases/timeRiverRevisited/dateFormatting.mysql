@@ -17,7 +17,7 @@ corresponding documents.
 
 CREATE PROCEDURE dateFormatting()
 BEGIN
-	SELECT date_format(date_str, '%Y-%m-%d') as date_iso
+  SELECT date_format(date_str, '%Y-%m-%d') as date_iso
   FROM documents
   ORDER BY id;
 END
