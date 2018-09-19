@@ -14,7 +14,7 @@ employees' names.
 
 CREATE PROCEDURE companyEmployees()
 BEGIN
-	select *
+  select *
   FROM departments JOIN employees
   ORDER BY dep_name, emp_name;
 END
