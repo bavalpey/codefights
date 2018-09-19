@@ -1,0 +1,22 @@
+/*
+You are managing a restaurant recommendation service that has recently started to gain popularity.
+The information about the restaurants is currently stored in the restaurants table with the following structure:
+id: unique id of the restaurant;
+name: the restaurant's name.
+As the table grew you decided to extend it, in particular add the description (VARCHAR(100), the description of the restaurant) and
+active (INT, 0 or 1 if it works or closed respectively) columns.
+
+Add these two new columns to the restaurants table using the following rules for all records:
+  the description should be set to "TBD" (for To Be Defined).
+  active should be set to 1.
+*/
+
+CREATE PROCEDURE restaurantInfo()
+BEGIN
+  ALTER TABLE restaurants
+  ADD  column description VARCHAR(3) NOT NULL
+  default "TBD";
+  alter table restaurants
+  add column active int NOT NULL default "1";
+  SELECT * FROM restaurants ORDER BY id;
+END
