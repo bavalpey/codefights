@@ -19,9 +19,9 @@ table who've never gotten a detention. The IDs of the students in the resulting 
 
 CREATE PROCEDURE scholarshipsDistribution()
 BEGIN
-	SELECT candidate_id as student_id FROM candidates as b
-    WHERE NOT EXISTS (
-    SELECT *
-    FROM detentions as a
-    WHERE b.candidate_id = a.student_id );
+  SELECT candidate_id as student_id FROM candidates as b
+	WHERE NOT EXISTS (
+	SELECT *
+	FROM detentions as a
+	WHERE b.candidate_id = a.student_id );
 END
