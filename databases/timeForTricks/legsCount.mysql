@@ -14,6 +14,6 @@ summary_legs and has only one row with the total number of legs that you can see
 
 DROP PROCEDURE IF EXISTS legsCount;
 CREATE PROCEDURE legsCount()
-    SELECT (SUM(if(type='human',2,4))) as summary_legs
-    FROM creatures
-    ORDER BY id;
+  SELECT (SUM(if(type='human',2,4))) as summary_legs
+  FROM creatures
+  ORDER BY id;
