@@ -17,8 +17,8 @@ order by item type, with items of the same type sorted in ascending order by the
 
 CREATE PROCEDURE itemCounts()
 BEGIN
-	select item_name, item_type, count(item_name) as 'item_count'
-    from availableItems
-    GROUP BY item_name, item_type
-    ORDER BY item_type asc, item_name;
+  SELECT item_name, item_type, count(item_name) as 'item_count'
+  FROM availableItems
+  GROUP BY item_name, item_type
+  ORDER BY item_type asc, item_name;
 END
