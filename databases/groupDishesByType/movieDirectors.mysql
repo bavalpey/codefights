@@ -20,7 +20,9 @@ The table should be sorted by the directors' names in ascending order.
 CREATE PROCEDURE movieDirectors()
 BEGIN
   SELECT director
-  FROM (select * from moviesInfo where year > 2000) as T
+  FROM (
+    SELECT * FROM moviesInfo
+    WHERE year > 2000) as T
   GROUP BY director
   HAVING sum(oscars) > 2;
 END
