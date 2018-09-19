@@ -17,7 +17,7 @@ Don't include year/quarter in the answer if there is no entry for it in the acco
 
 CREATE PROCEDURE netIncome()
 BEGIN
-	SELECT date_format(date, '%Y') as year, ceil(date_format(date, '%c') / 3) as quarter, sum(profit) - sum(loss) as net_profit
+  SELECT date_format(date, '%Y') as year, ceil(date_format(date, '%c') / 3) as quarter, sum(profit) - sum(loss) as net_profit
   FROM accounting
   GROUP BY year,quarter
   ORDER BY year;
