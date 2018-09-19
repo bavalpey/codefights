@@ -1,0 +1,19 @@
+/*
+Winter is coming, and it's going to be great! The weather forecasters promise that it's going to be snowy, and there are a bunch of
+holidays so you'll be able to spend entire days on the slopes. You want to know how many perfect ski days, which are sunny days that
+fall on holidays, there are going to be this winter.
+
+You downloaded information about the weather forecast and saved it as the table weather, which consists of a single sunny_date column of
+type DATE. Information about the upcoming holidays is stored in the table holidays, which consists of a holiday_date column of type
+DATE. It is guaranteed that the elements of each table are unique.
+
+Given the holidays and weather tables, return the dates that are present in both (i.e., their intersection). The resulting table should
+consist of a single ski_date column, and its elements should be sorted in ascending order.
+*/
+
+CREATE PROCEDURE sunnyHolidays()
+BEGIN
+  select holiday_date as ski_date
+  from holidays join weather on(holidays.holiday_date = weather.sunny_date)
+  order by holiday_date asc;
+END
