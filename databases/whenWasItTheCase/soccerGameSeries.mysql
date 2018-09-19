@@ -17,7 +17,7 @@ Your task is to return a new table with a single column winner, which can contai
 
 CREATE PROCEDURE soccerGameSeries()
 BEGIN
-	SELECT
+  SELECT
     CASE
       WHEN (x.t1_home + x.t1_out) > (x.t2_home + x.t2_out) THEN 1
       WHEN (x.t1_home + x.t1_out) < (x.t2_home + x.t2_out) THEN 2
