@@ -1,0 +1,50 @@
+/*
+You have a table scores that contains information about a series of soccer games. Your goal is to determine the winner of the series.
+A team is declared the winner if it won more games than the other team. If both teams had the same number of wins, then the winner is
+determined by the better goal difference (the difference between the goals that a team scores and the goals that the opposing team
+scores on them over all the games). If the goal differences are equal, the winner is the team that scored more goals during away games
+(i.e. games when it was not the host team). The result is the index of the winning team. If the above criteria are not sufficient for
+determining the winner, return 0.
+
+The scores table contains the following columns:
+  match_id - the unique ID of the match;
+  first_team_score - the score of the 1st team in the current match;
+  second_team_score - the score of the 2nd team in the current match;
+  match_host - the team that is the host of the match (can be 1 or 2).
+  
+Your task is to return a new table with a single column winner, which can contain 1, 2, or 0.
+*/
+
+CREATE PROCEDURE soccerGameSeries()
+BEGIN
+	SELECT
+    CASE
+      WHEN (x.t1_home + x.t1_out) > (x.t2_home + x.t2_out) THEN 1
+      WHEN (x.t1_home + x.t1_out) < (x.t2_home + x.t2_out) THEN 2
+      WHEN (x.t1_home + x.t1_out) = (x.t2_home + x.t2_out) THEN
+      CASE
+        WHEN (x.t1_out > x.t2_out) THEN 1
+        WHEN (x.t1_out < x.t2_out) THEN 2
+        ELSE 0 
+      END
+    END as winner
+  FROM (
+    SELECT SUM(z.t1_home) as t1_home, SUM(z.t2_out) as t2_out, SUM(z.t1_out) as t1_out, SUM(z.t2_home) as t2_home
+    FROM (
+    SELECT d.t1 as t1_home, d.t2 as t2_out, NULL AS t1_out, NULL AS t2_home, 1 as g
+      FROM (
+        SELECT SUM(first_team_score) as t1, SUM(second_team_score) as t2, match_host
+        FROM  scores
+        GROUP BY match_host
+        ORDER BY match_host) d 
+  WHERE match_host=1
+  UNION
+  SELECT null, null, d.t1 as t1_out, d.t2 as t2_home, 1 as g
+  FROM (
+    SELECT SUM(first_team_score) as t1, SUM(second_team_score) as t2, match_host
+    FROM  scores
+    GROUP BY match_host
+    ORDER BY match_host) d 
+    WHERE match_host=2) z
+  GROUP BY g ) x;
+END
