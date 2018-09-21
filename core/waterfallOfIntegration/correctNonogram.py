@@ -38,7 +38,8 @@ Example
   the output should be correctNonogram(size, nonogramField) = false.
 
 There are three mistakes in the nonogram:
-  In the 5th (1-based) row there are numbers ["-", "2", "2"], so there should be two runs of 2 black squares separated by at least one white square. However, there is only one run of 5 black squares.
+  In the 5th (1-based) row there are numbers ["-", "2", "2"], so there should be two runs of 2 black squares separated by at least one
+    white square. However, there is only one run of 5 black squares.
   In the 6th column there are numbers ["-", "1", "2"], so there should be a run of exactly 1 black square, followed by one or more
     white squares, followed by another 2 black squares. However, there is a single run of 3 black squares not separated by white ones.
   Finally, in the 4th row there are numbers ["-", "-", "3"], so there should be a single run of exactly 3 black squares. However, there
