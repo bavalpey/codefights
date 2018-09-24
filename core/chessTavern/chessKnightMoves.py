@@ -1,6 +1,6 @@
-/*
+"""
 Duplicate of intro level 11
-*/
+"""
 
 def chessKnightMoves(cell):
     moves = 8
