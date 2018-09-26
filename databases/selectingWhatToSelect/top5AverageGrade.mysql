@@ -1,0 +1,21 @@
+/*
+You're doing research about academic achievement, and you're studying one particular group of students at a local university. Find the
+average grade of the five most successful students in this group.
+
+The information about the students' grades is stored in a table called students, which has the following attributes:
+  student_id: the unique identifier of the student;
+  student_name: the name of the student;
+  grade: the grade that the student achieved.
+  
+The result should be a table with one column average_grade and one row that contains the average grade of the five students with the
+highest grades. The answer should be formatted to 2 digits after the decimal point. It is guaranteed that the five most successful
+students can be uniquely identified.
+*/
+
+CREATE PROCEDURE top5AverageGrade()
+BEGIN
+  select round(avg(grade),2) as average_grade
+  from(select grade
+      from students
+      order by grade desc limit 5) as d1;
+END
