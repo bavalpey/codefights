@@ -1,0 +1,23 @@
+/*
+There are many employees at your company, with a wide range of salaries. You've decided to find out the difference in salary between the
+employees who make the most and the employees who make the least.
+
+You store information about your employees in the table employees, which has the structure:
+  id: the unique employee ID;
+  name: the employee's name;
+  salary: the employee's salary - a positive integer.
+  
+The difference between the sum of the highest salaries and the sum of lowest salaries will give you the information you want. So, given
+the table employees, build the resulting table as follows: The table should contain only one column difference and only one row, which
+will contain the difference between sum of the highest and the sum of lowest salaries.
+*/
+
+CREATE PROCEDURE salaryDifference()
+BEGIN
+select case when sum(s2.salary*ct) is null then 0 else sum(s2.salary*ct) END as difference 
+from(
+  select salary, count(*) as ct
+  from employees
+  group by salary) as s1 JOIN (select max(salary) as salary from employees UNION select -1*min(salary) as salary from employees) as s2
+  on (s1.salary = abs(s2.salary));
+END
