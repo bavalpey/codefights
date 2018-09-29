@@ -15,5 +15,5 @@ def areFollowingPatterns(strings, patterns):
   # the above code checks to ensure that the number of different patterns is the exact same as the number of different words.
   #  However, this is not enough, as simply having len(set(strings)) == len(set(patterns)) would return true in the case of
   #  strings = ["cat","dog","dog"] and patterns = ["a","a","b"]. (in other words, in cases where a pattern is mapped to more than one
-  word).
+  # word).
   #  Thus, we check if the total number of unique pairs of strings and patterns is the same as the numbers of unique patterns.
