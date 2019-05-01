@@ -15,7 +15,6 @@ Example
     reverseInParentheses(inputString) = "foobazrabblim".
   Because "foo(bar(baz))blim" becomes "foo(barzab)blim" and then "foobazrabblim".
 """
-
 def revWord(word):
   return word[1:-1][::-1]
 
