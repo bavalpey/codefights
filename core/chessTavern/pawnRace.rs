@@ -13,9 +13,11 @@ White pawn moves upwards, black one moves downwards. The following moves are all
   * capture move one cell forward in the allowed direction and one cell to the left or to the right.
 
 
-The purpose of the game is to reach the the 1st row (for the black pawn) or the 8th row (for the white one), or to capture the opponent's pawn.
+The purpose of the game is to reach the the 1st row (for the black pawn) or the 8th row (for the white one), or to capture
+the opponent's pawn.
 
-Given the initial positions and whose turn it is, determine who will win or declare it a draw (i.e. it is impossible for any player to win). Assume that the players play optimally.
+Given the initial positions and whose turn it is, determine who will win or declare it a draw (i.e. it is impossible for any
+player to win). Assume that the players play optimally.
 
 Example
 
