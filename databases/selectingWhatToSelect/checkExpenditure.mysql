@@ -1,0 +1,31 @@
+/*
+Your boss knows that you're a good programmer and that you're responsible, so she's given you a big task - to check the 
+company's expenditure automatically. You're given the table expenditure_plan, which describes all the planned expenditures,
+and the table allowable_expenditure, which describes the amount that can be spent in certain time periods.
+
+The expenditure_plan table contains the following columns:
+
+monday_date - the unique date of the Monday of the corresponding week;
+expenditure_sum - the sum of the planned expenditure for the corresponding week.
+All dates in this table fall in the same year.
+The allowable_expenditure table contains the following columns:
+
+id - the unique ID of the limitation;
+left_bound - the unique left bound of the time period, represented by the number of the week (1-based);
+right_bound - the unique right bound of the time period, represented by the number of the week (1-based);
+value - the allowable sum that can be spent during the given left and right bounds, inclusive.
+The segments of the time periods don't intersect with one other. The weeks are numbered sequentially from the first week.
+Week 1 is the first full week of the year, meaning that its Monday is part of the current year. Your task is to return a
+table with the columns id and loss, where the value of loss is either 0 (if the expenditure limit with this id was not 
+exceeded) or the amount of money by which the planned expenditure exceeded the allowable expenditure, sorted by id.
+*/
+
+CREATE PROCEDURE checkExpenditure()
+BEGIN
+SELECT id, CASE WHEN sum(expenditure_sum) < min(ae.value) THEN 0 ELSE (sum(expenditure_sum) - ae.value) END as loss
+FROM expenditure_plan ep JOIN allowable_expenditure ae on(week(ep.monday_date) >= ae.left_bound
+                                                          AND week(ep.monday_date) <= ae.right_bound)
+GROUP BY id;
+
+
+END
