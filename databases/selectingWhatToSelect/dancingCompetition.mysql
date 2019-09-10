@@ -28,15 +28,18 @@ from scores left JOIN
 from (
     SELECT arbiter_id
     from scores
-    where first_criterion in (select min(first_criterion) as c from scores union all select max(first_criterion) as c from scores)
+    where first_criterion in (select min(first_criterion) as c from scores union all select max(first_criterion) as c from 
+                              scores)
 UNION ALL
     select arbiter_id
     from scores
-    where second_criterion in (select min(second_criterion) as c from scores union all select max(second_criterion) as c from scores)
+    where second_criterion in (select min(second_criterion) as c from scores union all select max(second_criterion) as c from 
+                               scores)
 UNION ALL
     select arbiter_id
     from scores
-    WHERE third_criterion in (select min(third_criterion) as c from scores union all select max(third_criterion) as c from scores)
+    WHERE third_criterion in (select min(third_criterion) as c from scores union all select max(third_criterion) as c from 
+                              scores)
 ) a1
 group by arbiter_id ) b1 on (scores.arbiter_id = b1.arbiter_id)
 where b1.times < 2 or b1.times IS NULL;
