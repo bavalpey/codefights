@@ -1,5 +1,6 @@
 /*
-During the dance contest, each judge evaluates the dancers' performances based on three criteria, using a score from 1 to 10 for each of the criteria. You are given a table of the scores awarded to a specific dancer by each judge. Recently, the
+During the dance contest, each judge evaluates the dancers' performances based on three criteria, using a score from 1 to 10 
+for each of the criteria. You are given a table of the scores awarded to a specific dancer by each judge. Recently, the
 dance contest made the decision to drop scores awarded by a certain judge if that judge gave an extreme (either minimum or
 maximum) score for at least two criteria.
 
