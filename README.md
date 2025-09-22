@@ -2,10 +2,10 @@
 **My solutions to codefights tasks**
 
 ## General Information
-problems are from https://codefights.com/
+Problems are from the now-defunct https://codefights.com/.
 
-referal link: https://codefights.com/signup/EHcMn7rZLepQLQP3G/main
-
+This was a website that transformed into what is now called CodeSignal. See https://codesignal.com/.
+The company rebranded their product, which used to be about coding challenges and code golf, into an entirely new website designed to.. I don't know.. But it's not as good as the original website. I presume many of the tasks are still in whatever form they had originally.
 
 In general, all code is preceded by the problem description found on codefights.  It also contains the listed examples.  When applicable, it may also include the input constraints (usually when the code will only work under the given input constraints).
 Usually, because I finish the problem in one sitting, I do not comment the code.  The comments found in the code are generally older attempts that I had tried that did not work out, but I kept to base new snippets of code on.
